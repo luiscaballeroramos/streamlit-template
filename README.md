@@ -108,5 +108,23 @@ la barra lateral, fuera del area repartida.
   permite scroll interno; no se ocultan zonas por ser una ventana estrecha.
 - El CSS queda acotado por la clave del layout, pero usa selectores internos
   de Streamlit. Hay que validar en navegador al cambiar su version.
-- La API es inicial: se distribuye como un modulo dentro del repositorio,
-  no como un paquete publicado en PyPI.
+- La API es inicial: se puede instalar desde este repositorio,
+  pero no esta publicada en PyPI.
+
+## Importar desde otra aplicacion
+
+Con este repositorio en una carpeta hermana, instala una dependencia editable
+en el entorno de la aplicacion consumidora:
+
+```powershell
+python -m pip install -e ..\streamlit-template
+```
+
+```python
+from streamlit_template import Layout, render_layout
+```
+
+La instalacion editable utiliza directamente [layouts.py](layouts.py), sin
+copiarlo en cada aplicacion. Reinicia Streamlit tras cambiar el modulo compartido.
+La configuracion de empaquetado mantiene el codigo en la raiz; las paginas y
+pruebas de la aplicacion de ejemplo siguen usando su import local existente.
